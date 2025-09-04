@@ -11,7 +11,7 @@ public class DbConnection {
 	public static Connection getConnection () throws Exception{
 		Connection con = DriverManager.getConnection(url,user,password);
 		return con;
-	}
+	}	
 	
 	
 }

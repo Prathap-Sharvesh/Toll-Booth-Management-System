@@ -24,6 +24,9 @@ public class guest {
 	            System.out.println("Vehicle Type: Two-Wheeler");
 	        else
 	            System.out.println("Vehicle Type: Four-Wheeler");
+	        
+	        System.out.println("Toll Fees: " + rs.getInt(4));
+	        
 	        System.out.println("========================================");
 	    }
 

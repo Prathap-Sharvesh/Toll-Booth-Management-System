@@ -9,23 +9,24 @@ public class admin {
 	int vehicleNo;
 	String brandName;
 	int vehicleType;
-
+	int fees;
 	public void addDetails(vehicle v) throws Exception
 	{
 
-		String query = "Insert into vehicle values (?,?,?)";
+		String query = "Insert into vehicle values (?,?,?,?)";
 		Connection con = DbConnection.getConnection();
 		PreparedStatement pst = con.prepareStatement(query);
 		pst.setInt(1, v.vehicleNo);
 		pst.setString(2,v.brandName);
 		pst.setInt(3, v.vehicleType);
+		pst.setInt(4, v.fees);
 		
 		pst.executeUpdate();
 		
 		System.out.println("Vehicle Details added Successfully"	);
 	}
 		
-	public void viewDetails() throws Exception
+public void viewDetails() throws Exception
 	{
 		String query = "Select * from vehicle";
 		Connection con = DbConnection.getConnection();
@@ -37,15 +38,19 @@ public class admin {
 			System.out.println("Brand Name: " + rs.getString(2));
 			if(rs.getInt(3)==2)
 				System.out.println("Vehicle Type " +"Two-Wheeler");
-			else
+			else if (rs.getInt(3) == 4)
 				System.out.println("Vehicle Type " +"Four-Wheeler");
+			else
+				System.out.println("Vehicle Type " +"Eight-Wheeler");
+			
+			System.out.println("Toll Fees: " + rs.getInt(4));
 			
 			System.out.println("========================================");
 		}
 
 	}
 
-	public void removeDetails( int no) throws Exception {
+public void removeDetails( int no) throws Exception {
 		// TODO Auto-generated method stub
 		String query = "Delete from vehicle where vehicle_no = ?";
 		Connection con = DbConnection.getConnection();
@@ -63,7 +68,7 @@ public class admin {
 	    }
 	}
 	
-	public void searchDetails( int no) throws Exception {
+public void searchDetails( int no) throws Exception {
 		// TODO Auto-generated method stub
 		
 		String query = "Select * from vehicle where vehicle_no = ?";
@@ -79,6 +84,8 @@ public class admin {
 				System.out.println("Vehicle Type " +"Two-Wheeler");
 			else
 				System.out.println("Vehicle Type " + "Four-Wheeler");
+			
+			System.out.println("Toll Fees: " + rs.getInt(4));
 			
 			System.out.println("========================================");
 		}
