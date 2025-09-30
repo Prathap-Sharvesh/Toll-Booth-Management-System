@@ -129,6 +129,7 @@ public class system extends JFrame  {
 	            new AdminPanel().setVisible(true);
 	        });
 	    }
+
 	    
 	    
 	    private void displayUserOptions() throws Exception {
@@ -145,7 +146,6 @@ public class system extends JFrame  {
 	        SwingUtilities.invokeLater(new Runnable() {
 	            public void run() {
 	                new system().setVisible(true);
-	                new AdminPanel().setVisible(true);
 	            }
 	        });
 	    }
